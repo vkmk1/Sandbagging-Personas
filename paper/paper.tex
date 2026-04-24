@@ -75,7 +75,7 @@
 % ABSTRACT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-Large language models often exhibit sycophancy, adapting responses to match a user's stated view even when it is false. We test whether general-purpose persona directions, extracted without sycophancy labels, reduce forced-choice sycophancy as effectively as a targeted Contrastive Activation Addition (CAA) baseline. On Gemma 2 27B and Qwen 3 32B, evaluated on a held-out PhilPapers A/B benchmark with Holm-corrected significance testing, critical-role vectors (Skeptic, Devil's Advocate, Judge) reach $68\%$ (Gemma) and $98\%$ (Qwen) of CAA's $\Delta\mathrm{logit}$ and are Holm-significant on all test seeds; conformist roles show weak, heterogeneous effects. All role--CAA cosines are below $0.17$, but the sign of $\cos(\text{role}, \mathrm{CAA})$ flips across models, so geometric independence does not establish mechanistic independence. Critical-role steering is a lightweight, data-efficient intervention, while the polarity asymmetry complicates simple family-level predictions.
+Large language models often exhibit sycophancy, adapting responses to match a user's stated view even when it is false. We test whether general-purpose persona directions, extracted without sycophancy labels, reduce forced-choice sycophancy as effectively as a targeted Contrastive Activation Addition (CAA) baseline. On Gemma 2 27B and Qwen 3 32B, evaluated on a held-out PhilPapers A/B benchmark with Holm-corrected significance testing, critical-role vectors (Skeptic, Devil's Advocate, Judge) reach $68\%$ (Gemma) and $116\%$ (Qwen) of CAA's $\Delta\mathrm{logit}$ and are Holm-significant on all test seeds; conformist roles show weak, heterogeneous effects. All role--CAA cosines are below $0.17$, but the sign of $\cos(\text{role}, \mathrm{CAA})$ flips across models, so geometric independence does not establish mechanistic independence. Critical-role steering is a lightweight, data-efficient intervention, while the polarity asymmetry complicates simple family-level predictions.
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -195,7 +195,7 @@ Random ($n=10$)  & ---            & $-1.058\,\pm.077$& $-10.3$ & --- \\
 \begin{figure}[t]
 \vskip 0.1in
 \begin{center}
-\includegraphics[width=\columnwidth]{figures/fig1_delta_logit_filtered}
+\includegraphics[width=\columnwidth]{fig1_deltas}
 \caption{$\Delta$ sycophancy logit at tune-locked coefficient ($3$ seeds, degraded cells excluded). Error bars show $95\%$ CIs; ***\,=\,Holm-significant on all $3$ seeds.}
 \label{fig:main}
 \end{center}
@@ -226,7 +226,7 @@ Since $|v_r \cdot \hat{v}_{\mathrm{CAA}}| < 0.17$ for all role vectors, the CAA-
 \begin{figure}[t]
 \vskip 0.1in
 \begin{center}
-\includegraphics[width=\columnwidth]{figures/fig4_cosines}
+\includegraphics[width=\columnwidth]{fig2_cosines}
 \caption{Cosine similarity heatmap. Critical roles cluster ($\cos \approx 0.6$--$0.7$); conformist roles cluster separately ($\cos \approx 0.8$). All role--CAA cosines are $<0.17$, but \emph{signs} differ across models (see text).}
 \label{fig:cosines}
 \end{center}
@@ -246,7 +246,7 @@ On Qwen, the dose-response is steeper. Critical-role and CAA curves converge at 
 \begin{figure}[t]
 \vskip 0.1in
 \begin{center}
-\includegraphics[width=\columnwidth]{figures/fig7_steering_curves_family}
+\includegraphics[width=\columnwidth]{fig3_curves_family}
 \caption{Family-averaged steering curves. Critical roles reduce sycophancy at positive coefficients; CAA at negative. Bands show min/max across family members. Random null flat; degraded cells excluded.}
 \label{fig:curves}
 \end{center}
@@ -334,7 +334,7 @@ The Assistant Axis \cite{lu2026} is a composite of $275$ role contrasts rather t
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{figures/fig3_per_seed_filtered}
+\includegraphics[width=0.8\textwidth]{fig4_per_seed}
 \caption{Per-seed $\Delta$ logit. Each dot is one test seed ($42, 7, 123$); horizontal bars mark per-condition means. Degraded cells excluded.}
 \label{fig:perseed}
 \end{center}
@@ -345,7 +345,7 @@ The Assistant Axis \cite{lu2026} is a composite of $275$ role contrasts rather t
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[width=0.9\textwidth]{figures/fig6_steering_curves}
+\includegraphics[width=0.9\textwidth]{fig5_per_condition}
 \caption{Per-condition steering curves (kept conditions only). Rows $=$ metric; columns $=$ model; shaded bands $=$ random-control mean $\pm$ std. Each line is a single condition; degraded cells excluded.}
 \label{fig:percond}
 \end{center}
